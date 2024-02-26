@@ -1,0 +1,44 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #fefefe;
+}
+h1{
+  font-size: 3rem;
+  width: 100vw;
+  text-align: center;
+  color:rgb(4, 4, 102)
+}
+.task {
+  background-color: #daeafc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.task:nth-child(even) {
+  background-color: #e4f8fe;
+}
+input[type="text"], input[type="date"] {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+button {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Manager</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+
+<body>
+  <h1>Task Manager</h1>
+  <input type="text" id="taskDescription" placeholder="Task description">
+  <input type="text" id="assignedTo" placeholder="Assigned to">
+  <input type="text" id="priority" placeholder="Priority">
+  <input type="date" id="dueDate" placeholder="Due date">
+  <input type="text" id="status" placeholder="Status">
+  <button id="btnAddTask">Add Task</button>
+  <input type="text" id="searchInput" placeholder="Search tasks" oninput="filterTasks()">
+  <div id="taskList"></div>
+  <script type="text/javascript" src="./script.js"></script> 
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+</body>
+
+</html>
