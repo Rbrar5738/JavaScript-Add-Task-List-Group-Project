@@ -63,7 +63,7 @@ const editTask = (id) => {
       <input type="text" id="newDescription" value="${description}" placeholder="New Description">
       <input type="text" id="newAssignedTo" value="${assignedTo}" placeholder="New Assigned To">
       <input type="text" id="newPriority" value="${priority}" placeholder="New Priority">
-      <input type="date" id="newDueDate" value="${dueDate}" placeholder="New Due Date">
+      <input type="select" id="newDueDate" value="${dueDate}" placeholder="New Due Date">
       <input type="text" id="newStatus" value="${status}" placeholder="New Status">
       <button class="save-btn">Save</button>
     `;
