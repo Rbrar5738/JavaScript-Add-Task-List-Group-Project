@@ -33,12 +33,10 @@ const addTask = () => {
   //Calling the displayTasks function to display the entered tasks
   displayTasks();
 
-  //Emptying the text fields
+  //Emptying all the text fields
   document.getElementById("taskDescription").value = "";
   document.getElementById("assignedTo").value = "";
-  document.getElementById("priority").value = "";
   document.getElementById("dueDate").value = "";
-  document.getElementById("status").value = "";
 };
 
 //DeleteTask function to delete a particular task
