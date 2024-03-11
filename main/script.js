@@ -32,6 +32,13 @@ const addTask = () => {
 
   //Calling the displayTasks function to display the entered tasks
   displayTasks();
+
+  //Emptying the text fields
+  document.getElementById("taskDescription").value = "";
+  document.getElementById("assignedTo").value = "";
+  document.getElementById("priority").value = "";
+  document.getElementById("dueDate").value = "";
+  document.getElementById("status").value = "";
 };
 
 //DeleteTask function to delete a particular task
@@ -42,29 +49,52 @@ const deleteTask = (id) => {
   displayTasks();
 };
 
-//eidtTask function to update a particular task
+//EidtTask function to update a particular task
 const editTask = (id) => {
   let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
   const index = tasks.findIndex((task) => task.id === id);
   if (index !== -1) {
+    const taskDiv = document.createElement("div");
+    taskDiv.classList.add("taskEdit");
+
+    //Fetchin values form tasks object
     const { description, assignedTo, priority, dueDate, status } = tasks[index];
-    const newDescription = prompt("Enter new description:", description);
-    const newAssignedTo = prompt("Enter new assigned to:", assignedTo);
-    const newPriority = prompt("Enter new priority:", priority);
-    const newDueDate = prompt("Enter new due date:", dueDate);
-    const newStatus = prompt("Enter new status:", status);
 
-    tasks[index] = {
-      id: id,
-      description: newDescription || description,
-      assignedTo: newAssignedTo || assignedTo,
-      priority: newPriority || priority,
-      dueDate: newDueDate || dueDate,
-      status: newStatus || status,
-    };
+    // Create input fields for editing
+    taskDiv.innerHTML = `
+      <input type="text" id="newDescription" value="${description}" placeholder="New Description">
+      <input type="text" id="newAssignedTo" value="${assignedTo}" placeholder="New Assigned To">
+      <input type="text" id="newPriority" value="${priority}" placeholder="New Priority">
+      <input type="date" id="newDueDate" value="${dueDate}" placeholder="New Due Date">
+      <input type="text" id="newStatus" value="${status}" placeholder="New Status">
+      <button class="save-btn">Save</button>
+    `;
 
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-    displayTasks();
+    //Saving the updated value
+    taskDiv.querySelector(".save-btn").addEventListener("click", () => {
+      const newDescription = document.getElementById("newDescription").value;
+      const newAssignedTo = document.getElementById("newAssignedTo").value;
+      const newPriority = document.getElementById("newPriority").value;
+      const newDueDate = document.getElementById("newDueDate").value;
+      const newStatus = document.getElementById("newStatus").value;
+
+      // Update the task object
+      tasks[index] = {
+        id: id,
+        description: newDescription || description,
+        assignedTo: newAssignedTo || assignedTo,
+        priority: newPriority || priority,
+        dueDate: newDueDate || dueDate,
+        status: newStatus || status,
+      };
+
+      localStorage.setItem("tasks", JSON.stringify(tasks));
+      displayTasks();
+    });
+    //Adding edited vales to the task list.
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = "";
+    taskList.appendChild(taskDiv);
   }
 };
 
@@ -86,6 +116,7 @@ const displayTasks = () => {
   tasks.forEach((task) => {
     const taskDiv = document.createElement("div");
     taskDiv.classList.add("task");
+    //
     taskDiv.innerHTML = `
       <p><strong>Description:</strong> ${task.description}</p>
       <p><strong>Assigned To:</strong> ${task.assignedTo}</p>
@@ -126,7 +157,8 @@ const filterTasks = () => {
       <p><strong>Priority:</strong> ${task.priority}</p>
       <p><strong>Due Date:</strong> ${task.dueDate}</p>
       <p><strong>Status:</strong> ${task.status}</p>
-      <button onclick="deleteTask(${task.id})">Delete</button>
+      <button class="edit-btn" onclick="editTask(${task.id})">Edit</button>
+      <button class="delete-btn" onclick="deleteTask(${task.id})">Delete</button>
     `;
     taskList.appendChild(taskDiv);
   });

@@ -11,15 +11,47 @@
 
 <body>
   <h1>Task Manager</h1>
-  <input type="text" id="taskDescription" placeholder="Task description">
-  <input type="text" id="assignedTo" placeholder="Assigned to">
-  <input type="text" id="priority" placeholder="Priority">
-  <input type="date" id="dueDate" placeholder="Due date">
-  <input type="text" id="status" placeholder="Status">
-  <button id="btnAddTask">Add Task</button>
-  <input type="text" id="searchInput" placeholder="Search tasks" oninput="filterTasks()">
+  <div id="main">
+    <div>
+      <label for="taskDescription">Task Description</label><br>
+      <input type="text" id="taskDescription" placeholder="Task description">
+    </div>
+    <div>
+      <label for="assignedTo">Assigned to</label><br>
+      <input type="text" id="assignedTo" placeholder="Assigned to">
+    </div>
+    <div>
+      <label for="priority">Priority</label><br>
+      <select name="priority" id="priority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+    </div>
+    <div>
+      <label for="dueDate">Due date</label><br>
+      <input type="date" id="dueDate" placeholder="Due date">
+    </div>
+    <div>
+      <label for="status">Status</label><br>
+      <select name="status" id="status">
+        <option value="Started">Started</option>
+        <option value="Finished">Finished</option>
+        <option value="Under Progress">Under Progress</option>
+      </select>
+    </div>
+    <div>
+      <button id="btnAddTask">Add Task</button>
+    </div>
+    <div>
+      <input type="text" id="searchInput" placeholder="Search tasks" oninput="filterTasks()">
+    </div>
+
+
+  </div>
+
   <div id="taskList"></div>
-  <script type="text/javascript" src="./script.js"></script> 
+  <script type="text/javascript" src="./script.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
 </body>
 
